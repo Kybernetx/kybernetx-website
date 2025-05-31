@@ -1,8 +1,8 @@
 // src/App.jsx
-import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Missions from "./components/Missions";
+import FeaturedProducts from "./components/FeaturedProducts";
+import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <Missions />
-      {/* You could add an About or Contact section here */}
+      <FeaturedProducts />
+      <Newsletter />
       <Footer />
     </>
   );

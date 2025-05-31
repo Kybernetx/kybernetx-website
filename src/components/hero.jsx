@@ -1,13 +1,23 @@
 // src/components/Hero.jsx
-import React from "react";
-
 function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="hero-content">
-        <h1>Revolutionizing AI in Manufacturing</h1>
-        <p>From factory floors to orbital stations, our AI agents empower the future.</p>
-        <button>Learn More</button>
+      <div className="container">
+        <div className="hero-content">
+          <h1>AI-Powered E-Commerce Solutions</h1>
+          <p>
+            Discover cutting-edge AI products and custom solutions designed to revolutionize 
+            your business operations. From intelligent manufacturing tools to advanced automation systems.
+          </p>
+          <div className="hero-buttons">
+            <a href="#products" className="btn btn-primary">
+              Shop Now
+            </a>
+            <a href="#about" className="btn btn-outline">
+              Learn More
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
