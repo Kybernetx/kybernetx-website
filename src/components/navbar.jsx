@@ -1,11 +1,21 @@
 // src/components/Navbar.jsx
 import { useState } from "react";
 
-function Navbar() {
-  const [activeLink, setActiveLink] = useState("home");
+function Navbar({ activeSection = "home", setActiveSection = () => {} }) {
+  const [cartCount] = useState(0);
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
+  const handleLinkClick = (link, event) => {
+    event.preventDefault();
+    setActiveSection(link);
+    
+    // Smooth scroll to section
+    const element = document.getElementById(link);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   return (
@@ -15,35 +25,35 @@ function Navbar() {
         <nav>
           <a 
             href="#home" 
-            className={activeLink === "home" ? "active" : ""}
-            onClick={() => handleLinkClick("home")}
+            className={activeSection === "home" ? "active" : ""}
+            onClick={(e) => handleLinkClick("home", e)}
           >
             Home
           </a>
           <a 
             href="#products" 
-            className={activeLink === "products" ? "active" : ""}
-            onClick={() => handleLinkClick("products")}
+            className={activeSection === "products" ? "active" : ""}
+            onClick={(e) => handleLinkClick("products", e)}
           >
             Shop
           </a>
           <a 
             href="#about" 
-            className={activeLink === "about" ? "active" : ""}
-            onClick={() => handleLinkClick("about")}
+            className={activeSection === "about" ? "active" : ""}
+            onClick={(e) => handleLinkClick("about", e)}
           >
             About
           </a>
           <a 
             href="#contact" 
-            className={activeLink === "contact" ? "active" : ""}
-            onClick={() => handleLinkClick("contact")}
+            className={activeSection === "contact" ? "active" : ""}
+            onClick={(e) => handleLinkClick("contact", e)}
           >
             Contact
           </a>
-          <a href="#cart" className="btn btn-outline">
-            Cart (0)
-          </a>
+          <button className="btn btn-outline cart-btn">
+            🛒 Cart ({cartCount})
+          </button>
         </nav>
       </div>
     </header>
