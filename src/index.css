@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -77,6 +75,16 @@ button:focus-visible {
   font-family: sans-serif; 
 }
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 /* Body - Enhanced styling */
 body {
   background-color: var(--color-soft-white);
@@ -84,6 +92,9 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Enhanced Hero Section */
@@ -103,9 +114,9 @@ body {
   grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   width: 100%;
 }
 
@@ -340,9 +351,9 @@ body {
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   width: 100%;
 }
 
@@ -403,9 +414,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 .navbar .logo {
@@ -948,6 +959,62 @@ body {
 
 /* Responsive Design */
 
+/* Ultra-Wide Desktop (1600px+) */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1800px;
+    padding: 0 5rem;
+  }
+  
+  .hero .container {
+    max-width: 1800px;
+    padding: 0 5rem;
+    gap: 10rem;
+  }
+  
+  .navbar .container {
+    max-width: 1800px;
+    padding: 0 5rem;
+  }
+  
+  .navbar nav {
+    gap: 3rem;
+    max-width: 700px;
+  }
+  
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.4rem;
+  }
+  
+  .hero-graphic {
+    width: 500px;
+    height: 500px;
+  }
+  
+  .main-node {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .secondary-node {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+  }
+  
+  .product-card {
+    padding: 3.5rem;
+  }
+}
+
 /* Large Desktop (1400px+) */
 @media (min-width: 1400px) {
   .hero {
@@ -1075,11 +1142,10 @@ body {
   .hero {
     padding: 6rem 0 4rem;
   }
-  
-  .hero .container {
+    .hero .container {
     gap: 4rem;
-    padding: 0 2rem;
-    max-width: 1200px;
+    padding: 0 3rem;
+    max-width: 1400px;
   }
   
   .hero h1 {
@@ -1131,9 +1197,9 @@ body {
     .product-card {
     padding: 2.5rem;
   }
-    /* Navbar enhancements for desktop */
+  /* Navbar enhancements for desktop */
   .navbar .container {
-    max-width: 1200px;
+    max-width: 1400px;
   }
 
   .navbar .logo {
@@ -1565,6 +1631,226 @@ body {
   
   .product-price {
     font-size: 1.75rem;
+  }
+}
+
+/* Mobile Navigation Fixes - CRITICAL: Only affects mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Hide desktop navigation and show mobile hamburger menu */
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Logo remains visible */
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-soft-white);
+    z-index: 1001;
+  }
+  
+  /* Convert desktop nav to mobile slide-out menu */
+  .navbar nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--color-primary);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    gap: 0;
+    max-width: none;
+  }
+  
+  /* Show navigation when active */
+  .navbar nav.mobile-nav-open {
+    left: 0;
+  }
+  
+  /* Mobile navigation links styling */
+  .navbar nav a {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    color: var(--color-soft-white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
+    margin: 0;
+  }
+  
+  .navbar nav a:hover,
+  .navbar nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 1rem;
+  }
+  
+  /* Mobile cart button in slide-out menu */
+  .navbar .cart-btn {
+    margin-top: 2rem;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-height: 44px;
+  }
+    /* Hamburger menu button - positioned in top-right corner */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px; /* Increased for better touch target */
+    height: 44px; /* Increased for better touch target */
+    background: transparent;
+    border: none;
+    padding: 7px;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+  }
+    .mobile-menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background: #F6F2E8; /* Explicit soft white color for visibility */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+    /* Hamburger animation when open */
+  .mobile-menu-toggle.open span:first-child {
+    transform: rotate(45deg) translate(5px, 8px);
+    width: 80%;
+  }
+  
+  .mobile-menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  .mobile-menu-toggle.open span:last-child {
+    transform: rotate(-45deg) translate(5px, -8px);
+    width: 80%;
+  }
+  
+  /* Mobile overlay */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Hide mobile menu toggle on desktop */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .mobile-nav-overlay {
+    display: none;
+  }
+}
+
+/* Enhanced mobile content layout fixes */
+@media (max-width: 767px) {
+  /* Ensure full-width utilization */
+  .container {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+  
+  /* Prevent horizontal scroll on all mobile devices */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Hero section mobile optimization */
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  /* About section mobile layout */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Contact section mobile fixes */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-info {
+    order: 2;
+  }
+  
+  .contact-form-container {
+    order: 1;
+    padding: 1.5rem;
+  }
+  
+  /* Form mobile optimization */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Ensure images don't break layout */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
